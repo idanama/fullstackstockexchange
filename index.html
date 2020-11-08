@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Stock Exchange - FSSE</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <nav>
+            <h1 class="logo">F<span>SS</span>E</h1>
+            <div class="toolbar">
+                <div class="search-bar minimized">
+                    <form id="search-form">
+                        <button class="circle" id="search-button"><img src="/res/icons/search.svg"
+                                alt="Search"></button>
+                        <input class="search-input d-none" type="text" name="search" id="search" placeholder="Search">
+                        <button class="search-input circle d-none" id="search-close"><img src="/res/icons/x.svg"
+                                alt="Close"></button>
+                    </form>
+                    <div class="search-results d-none">
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <div class="monitor">
+        </div>
+    </div>
+    <script src="/js/api.js"></script>
+    <script src="/js/ui.js"></script>
+
+</body>
+
+</html>
