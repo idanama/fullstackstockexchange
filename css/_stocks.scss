@@ -121,6 +121,7 @@
 
 #chartjs-tooltip {
     transition-duration: 300ms;
+    z-index: 2;
 
     background-color: white;
     border-radius: 1em;

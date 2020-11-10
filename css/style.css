@@ -180,6 +180,7 @@
 #chartjs-tooltip {
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
+  z-index: 2;
   background-color: white;
   border-radius: 1em;
   border: 1px solid rgba(0, 0, 0, 0.1);
