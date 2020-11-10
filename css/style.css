@@ -1,6 +1,233 @@
 @import url("./reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap");
-@import url("./loader.css");
+.loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.loader img {
+  -webkit-animation: rotateloader 3s cubic-bezier(0, 0.5, 0.6, 1) infinite;
+          animation: rotateloader 3s cubic-bezier(0, 0.5, 0.6, 1) infinite;
+}
+
+@-webkit-keyframes rotateloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.monitor {
+  display: -ms-grid;
+  display: grid;
+  padding: 2em 0;
+}
+
+.card-container {
+  max-width: 605px;
+}
+
+.card {
+  z-index: 1;
+  padding: 1em 2em 2em 2em;
+  border-radius: 2em;
+  background-color: white;
+  -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+          filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+  position: relative;
+}
+
+.card .graph-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 10rem;
+}
+
+.card header,
+.card footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.card header :first-child > div,
+.card footer :first-child > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 0.5em;
+}
+
+.card header :first-child > div > div,
+.card footer :first-child > div > div {
+  padding-right: 0.5em;
+}
+
+.card header :last-child,
+.card footer :last-child {
+  max-height: 2.5em;
+}
+
+.card .extra-toggle {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  cursor: pointer;
+  -webkit-transition-duration: 1000ms;
+          transition-duration: 1000ms;
+}
+
+.card .extra-toggle.open {
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(180deg);
+          transform: translateX(-50%) translateY(-50%) rotate(180deg);
+}
+
+.extra-wrapper {
+  overflow: hidden;
+  -webkit-transform: translateY(-2em);
+          transform: translateY(-2em);
+  opacity: 0.99;
+  max-height: 0;
+  -webkit-transition-duration: 1000ms;
+          transition-duration: 1000ms;
+}
+
+.extra-wrapper.open {
+  max-height: 100%;
+}
+
+.extra {
+  line-height: 1.25em;
+  background-color: #1E1E1E;
+  -webkit-transform: translateY(-110%);
+          transform: translateY(-110%);
+  color: white;
+  -webkit-transition-duration: 1000ms;
+          transition-duration: 1000ms;
+  padding: 6em 2em 2em 2em;
+  border-radius: 2em;
+  z-index: -3;
+  visibility: hidden;
+}
+
+.extra.hide-fast {
+  visibility: hidden;
+  -webkit-transition-duration: 0;
+          transition-duration: 0;
+}
+
+.extra.open {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  visibility: visible;
+  -webkit-transform: translateY(-3em);
+          transform: translateY(-3em);
+}
+
+.extra .key {
+  color: #9CDCFE;
+}
+
+.extra .value {
+  color: #CE9178;
+}
+
+.extra .value a {
+  color: #CE9178;
+}
+
+#chartjs-tooltip {
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  background-color: white;
+  border-radius: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+          filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+}
+
+#chartjs-tooltip table div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1em;
+}
+
+#chartjs-tooltip table div span:first-child {
+  padding-right: 0.5em;
+}
+
+#chartjs-tooltip table > :first-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.graph-container {
+  position: relative;
+  margin: auto;
+  width: 99%;
+}
+
+.loader-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 10rem;
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -44,6 +271,10 @@ a:hover {
 
 .logo span {
   font-weight: 100;
+}
+
+h2 {
+  font-size: 1.5rem;
 }
 
 .d-none {
@@ -139,8 +370,8 @@ button:active {
   z-index: 2;
   -ms-grid-columns: 4em auto 4em;
       grid-template-columns: 4em auto 4em;
-  -ms-grid-rows: 3em auto;
-      grid-template-rows: 3em auto;
+  -ms-grid-rows: 2em auto;
+      grid-template-rows: 2em auto;
   min-height: 8em;
 }
 
@@ -162,5 +393,24 @@ button:active {
 
 .search-bar .search-results li:last-child {
   border-bottom: none;
+}
+
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.good {
+  color: #008800;
+}
+
+.bad {
+  color: #d80007;
 }
 /*# sourceMappingURL=style.css.map */

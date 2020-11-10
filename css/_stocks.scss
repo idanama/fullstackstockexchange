@@ -1,0 +1,161 @@
+@import './variables';
+
+
+.monitor {
+    display: grid;
+    padding: 2em 0;
+}
+
+.card-container {
+    max-width: 605px;
+}
+
+.card {
+    z-index: 1;
+    padding: 1em 2em 2em 2em;
+    border-radius: $radius;
+    background-color: white;
+    filter: $shadow;
+
+    position: relative;
+
+    .graph-container {
+        display: flex;
+        justify-content: center;
+        min-height: 10rem;
+    }
+
+    header,
+    footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        :first-child {
+
+            >div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                >div {
+                    padding-right: 0.5em;
+                }
+
+                padding-top: 0.5em;
+            }
+
+            // background-color: green;
+        }
+
+        :last-child {
+            max-height: 2.5em;
+        }
+    }
+
+    .extra-toggle {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        cursor: pointer;
+
+        transition-duration: 1000ms;
+
+        &.open {
+            transform: translateX(-50%) translateY(-50%) rotate(180deg);
+        }
+    }
+
+}
+
+.extra-wrapper {
+    overflow: hidden;
+    transform: translateY(-2em);
+    // z-index: -10;
+    opacity: 0.99;
+    max-height: 0;
+    transition-duration: 1000ms;
+
+    &.open {
+        max-height: 100%;
+    }
+}
+
+.extra {
+    line-height: 1.25em;
+    background-color: #1E1E1E;
+    transform: translateY(-110%);
+    color: white;
+    transition-duration: 1000ms;
+    padding: 6em 2em 2em 2em;
+    border-radius: $radius;
+    z-index: -3;
+    visibility: hidden;
+    // height: 0px;
+    // overflow: hidden;
+
+    &.hide-fast {
+        visibility: hidden;
+        transition-duration: 0;
+    }
+
+    &.open {
+        height: fit-content;
+        visibility: visible;
+        transform: translateY(-3em);
+    }
+
+    .key {
+        color: #9CDCFE
+    }
+
+    .value {
+        color: #CE9178;
+
+        a {
+            color: #CE9178
+        }
+    }
+}
+
+#chartjs-tooltip {
+    transition-duration: 300ms;
+
+    background-color: white;
+    border-radius: 1em;
+    border: $border;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    filter: $shadow;
+
+    table {
+
+        div {
+            display: flex;
+            justify-content: center;
+            padding: 1em;
+
+            span:first-child {
+                padding-right: 0.5em;
+            }
+        }
+
+        >:first-child {
+            border-bottom: $border;
+        }
+    }
+}
+
+.graph-container {
+    position: relative;
+    margin: auto;
+    width: 99%;
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    min-height: 10rem;
+}

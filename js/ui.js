@@ -2,6 +2,8 @@ const searchBar = document.querySelector('.search-bar');
 const searchButton = searchBar.querySelector('#search-button');
 let searchOpen = false;
 
+const genericLoaderFill = '<div class="flex-center loader"><img src="/res/icons/loader.svg"></div>';
+
 const changeSearchBarState = (phase) => {
   switch (phase) {
     case 0:
@@ -34,10 +36,10 @@ searchButton.addEventListener('click', async (e) => {
   e.preventDefault();
   if (!searchOpen) {
     changeSearchBarState(1);
-  } else {
-    changeSearchBarState(2);
+  } else if (searchBar.querySelector('input').value) {
     const query = searchBar.querySelector('input').value;
     const res = await searchQuery(query);
+    changeSearchBarState(2);
 
     const list = document.createElement('ul');
 
@@ -49,7 +51,7 @@ searchButton.addEventListener('click', async (e) => {
       });
     } else {
       const li = document.createElement('li');
-      li.innerHTML = '<div>No results found</div><div>😞</div>';
+      li.innerHTML = '<div>No results found</div><div>🧐</div>';
       list.appendChild(li);
     }
     searchBar.querySelector('.search-results').innerHTML = null;

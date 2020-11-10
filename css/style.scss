@@ -1,6 +1,10 @@
 @import url('./reset.css');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap');
-@import url('./loader.css');
+@import './variables';
+@import './loader';
+@import './stocks';
+
+
 
 html {
     box-sizing: border-box;
@@ -13,9 +17,7 @@ html {
 }
 
 
-$shadow : drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
-$btnSize:4em;
-$lineHeight: 3em;
+
 
 body {
     font-family: 'Lato', sans-serif;
@@ -47,6 +49,10 @@ a {
         font-weight: 100;
     }
 
+}
+
+h2 {
+    font-size: 1.5rem;
 }
 
 .d-none {
@@ -83,7 +89,7 @@ button {
         overflow: hidden;
 
         width: $btnSize;
-        border-radius: $btnSize/2;
+        border-radius: $radius;
     }
 
     &:active {
@@ -102,7 +108,7 @@ button {
     width: 100%;
     max-width: 30rem;
     min-width: 12em;
-    border-radius: $btnSize/2;
+    border-radius: $radius;
     background-color: white;
 
     filter: $shadow;
@@ -137,14 +143,14 @@ button {
     }
 
     .search-results {
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: $border;
         padding: 1em 2em;
 
         li {
             display: flex;
             justify-content: space-between;
             padding: 0.8em 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: $border;
 
             &:last-child {
                 border-bottom: none;
@@ -153,4 +159,19 @@ button {
         }
     }
 
+}
+
+
+.flex-center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.good {
+    color: $good;
+}
+
+.bad {
+    color: $bad;
 }
