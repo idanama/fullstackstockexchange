@@ -381,7 +381,8 @@ button:active {
   padding: 1em 2em;
 }
 
-.search-bar .search-results li {
+.search-bar .search-results li > a,
+.search-bar .search-results li > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -392,8 +393,40 @@ button:active {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.search-bar .search-results li:last-child {
+.search-bar .search-results li > a:last-child,
+.search-bar .search-results li > div:last-child {
   border-bottom: none;
+}
+
+.search-bar .search-results li > a > div,
+.search-bar .search-results li > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-bar .search-results li > a > div div,
+.search-bar .search-results li > div > div div {
+  padding-left: 0.5em;
+}
+
+.search-bar .search-results li > a img,
+.search-bar .search-results li > div img {
+  max-height: 1.5em;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.search-bar .search-results li > a .image,
+.search-bar .search-results li > div .image {
+  overflow: hidden;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 50%;
+  padding-left: 0;
 }
 
 .flex-center {

@@ -146,14 +146,42 @@ button {
         border-top: $border;
         padding: 1em 2em;
 
-        li {
+        li>a,
+        li>div {
             display: flex;
             justify-content: space-between;
+
             padding: 0.8em 0;
             border-bottom: $border;
 
             &:last-child {
                 border-bottom: none;
+            }
+
+            >div {
+                div {
+                    padding-left: 0.5em;
+                }
+
+                display: flex;
+                align-items: center;
+
+
+
+
+            }
+
+            img {
+                max-height: 1.5em;
+                object-fit: cover;
+            }
+
+            .image {
+                overflow: hidden;
+                height: 1.5em;
+                width: 1.5em;
+                border-radius: 50%;
+                padding-left: 0;
             }
 
         }

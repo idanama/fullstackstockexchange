@@ -38,7 +38,7 @@ searchButton.addEventListener('click', async (e) => {
     changeSearchBarState(1);
   } else if (searchBar.querySelector('input').value) {
     const query = searchBar.querySelector('input').value;
-    const res = await stockApi.searchBar(query);
+    const res = await stockApi.searchBar(query, searchBarLoader);
     changeSearchBarState(2);
 
     const list = document.createElement('ul');
@@ -46,16 +46,45 @@ searchButton.addEventListener('click', async (e) => {
     if (res.length > 0) {
       res.forEach((stock) => {
         const li = document.createElement('li');
-        li.innerHTML = `<div id="result-${stock.symbol}"><a href="/company.html?symbol=${stock.symbol}">${stock.name}</div><div>${stock.symbol}</a></div>`;
+        li.id = `result-${stock.symbol}`;
+        li.innerHTML = `
+        <a href="/company.html?symbol=${stock.symbol}">
+          <div>
+            <div class="image"></div>
+            <div class="name">${stock.name}</div>
+          </div>
+          <div>
+            <div class="change"></div>
+            <div class="symbol">${stock.symbol}</div>
+          </div>
+        </a>
+        `;
         list.appendChild(li);
       });
     } else {
       const li = document.createElement('li');
-      li.innerHTML = '<div>No results found</div><div>🧐</div>';
+      li.innerHTML = '<div><div>No results found</div><div>🧐</div></div>';
       list.appendChild(li);
     }
     searchBar.querySelector('.search-results').innerHTML = null;
     searchBar.querySelector('.search-results').appendChild(list);
+
+    if (res.length > 0) {
+      for (let i = 0; i < res.length; i += 1) {
+        const quote = await stockApi.company(res[i].symbol);
+        const stock = {
+          ...quote.profile,
+          symbol: quote.symbol,
+        };
+        const li = document.querySelector(`#result-${stock.symbol}`);
+        li.querySelector('.change').innerHTML = `
+            <span class="${stock.changes >= 0 ? 'good' : 'bad'}">
+            ${(((stock.changes / (stock.price - stock.changes)) * 100) || 0).toFixed(2)}%
+            </span>
+            `;
+        li.querySelector('.image').innerHTML = `<img src="${stock.image}">`;
+      }
+    }
   }
 });
 

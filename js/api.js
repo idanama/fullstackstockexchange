@@ -16,7 +16,8 @@ const apiQuery = async (url, loader) => {
 };
 
 const stockApi = {
-  searchBar: async (query, loader) => apiQuery(`search?limit=10&exchange=NASDAQ&query=${query}`, loader),
+  searchBar: async (query, loader) => apiQuery(`search?limit=9&exchange=NASDAQ&query=${query}`, loader),
+  quote: async (query, loader) => apiQuery(`quote/${query}`, loader),
   company: async (query, loader) => apiQuery(`company/profile/${query}`, loader),
   graph: async (query, loader) => apiQuery(`historical-price-full/${query}?serietype=line`, loader),
 };
