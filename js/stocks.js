@@ -17,11 +17,11 @@ const performanceMoji = (percent, max = 0.05) => {
 
 const displayCompany = async (symbol) => {
   createCard(symbol);
-  const res = await companyQuery(symbol);
+  const res = await stockApi.company(symbol);
   loadCompanyCard({ ...res.profile, symbol: res.symbol });
   document.querySelector(`#${symbol} .graph-container`).innerHTML = genericLoaderFill;
 
-  const graph = await graphQuery(symbol);
+  const graph = await stockApi.graph(symbol);
 
   // if there is a new price, add it to historical data
   if (graph.historical[0].close !== res.profile.price) {

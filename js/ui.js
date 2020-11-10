@@ -38,7 +38,7 @@ searchButton.addEventListener('click', async (e) => {
     changeSearchBarState(1);
   } else if (searchBar.querySelector('input').value) {
     const query = searchBar.querySelector('input').value;
-    const res = await searchQuery(query);
+    const res = await stockApi.searchBar(query);
     changeSearchBarState(2);
 
     const list = document.createElement('ul');
@@ -46,7 +46,7 @@ searchButton.addEventListener('click', async (e) => {
     if (res.length > 0) {
       res.forEach((stock) => {
         const li = document.createElement('li');
-        li.innerHTML = `<div><a href="/company.html?symbol=${stock.symbol}">${stock.name}</div><div>${stock.symbol}</a></div>`;
+        li.innerHTML = `<div id="result-${stock.symbol}"><a href="/company.html?symbol=${stock.symbol}">${stock.name}</div><div>${stock.symbol}</a></div>`;
         list.appendChild(li);
       });
     } else {
