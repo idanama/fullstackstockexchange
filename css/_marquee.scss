@@ -16,6 +16,7 @@
     width: fit-content;
     filter: $shadow;
 
+
     a {
         display: flex;
         padding-right: 0.6em;
@@ -26,6 +27,10 @@
     }
 
     animation:ticker 60s linear infinite;
+
+    &:hover {
+        animation-play-state: paused;
+    }
 }
 
 @keyframes ticker {
