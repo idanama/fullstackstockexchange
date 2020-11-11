@@ -1,6 +1,6 @@
 @import './variables';
 
-.ticker-wrapper {
+.marquee-wrapper {
     width: 100vw;
     position: fixed;
     bottom: 0;
@@ -8,7 +8,7 @@
     overflow: hidden;
 }
 
-.ticker {
+.marquee {
     height: 100%;
     display: flex;
     background-color: white;
@@ -37,19 +37,3 @@
         transform: translateX(-50%);
     }
 }
-
-// img {
-//     animation: rotateloader 3s cubic-bezier(0, 0.5, 0.6, 1) infinite;
-// }
-// }
-
-// @keyframes rotateloader {
-
-// 0% {
-//     transform: rotate(0deg)
-// }
-
-// 100% {
-//     transform: rotate(360deg)
-// }
-// }

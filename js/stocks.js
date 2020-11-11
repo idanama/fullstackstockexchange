@@ -1,6 +1,6 @@
-import stockApi from './api.js'
-import {genericLoaderFill} from './ui.js'
-import {updateGraph} from './graphs.js'
+import stockApi from './api.js';
+import { genericLoaderFill } from './ui.js';
+import { updateGraph } from './graphs.js';
 
 const pageParams = new URLSearchParams(window.location.search).get('symbol');
 
@@ -84,10 +84,19 @@ const loadCompanyCard = (info) => {
 
   const keys = Object.keys(info);
   keys.forEach((key) => {
-    if (key === 'website') {
-      extraContent += `<div><span class="key">"${key}":\t</span><span class="value"><a href="${info[key]}" target="_blank">${info[key]}</a></span></div>\n`;
-    } else {
-      extraContent += `<div><span class="key">"${key}":\t</span><span class="value">"${info[key]}"</span></div>\n`;
+    switch (key) {
+      case 'website':
+        extraContent += `<div><span class="key">"${key}":\t</span><span class="value"><a href="${info[key]}" target="_blank">${info[key]}</a></span></div>\n`;
+        break;
+      case 'mktCap':
+        extraContent += `<div><span class="key">"${key}":\t</span><span class="value"><a href="${info[key]}" target="_blank">${info[key]}</a></span>\t<span class="comment">//\t${Number.parseFloat(info[key]).toLocaleString()} ${info.currency}</span></div>\n`;
+        break;
+      case 'phone':
+        extraContent += `<div><span class="key">"${key}":\t</span><span class="value"><a href="tel:+${info[key]}">${info[key]}</a></span></div>\n`;
+        break;
+      default:
+        extraContent += `<div><span class="key">"${key}":\t</span><span class="value">"${info[key]}"</span></div>\n`;
+        break;
     }
   });
 

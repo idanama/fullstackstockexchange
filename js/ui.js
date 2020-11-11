@@ -1,4 +1,5 @@
-import stockApi from './api.js'
+import stockApi from './api.js';
+import Marquee from './Marquee.js';
 
 const searchBar = document.querySelector('.search-bar');
 const searchButton = searchBar.querySelector('#search-button');
@@ -105,4 +106,13 @@ const searchBarLoader = (truth) => {
   }
 };
 
-export {genericLoaderFill}
+const buildMarquee = async () => {
+  const marqueeWrapper = document.createElement('div');
+  marqueeWrapper.classList.add('marquee-wrapper');
+  marqueeWrapper.append(await new Marquee(marqueeWrapper).build());
+  document.body.append(marqueeWrapper);
+};
+
+buildMarquee();
+
+export { genericLoaderFill };

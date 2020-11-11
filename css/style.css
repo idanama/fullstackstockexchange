@@ -177,6 +177,11 @@
   color: #CE9178;
 }
 
+.extra .comment {
+  color: #6A8A35;
+  padding-left: 1em;
+}
+
 #chartjs-tooltip {
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
@@ -229,7 +234,7 @@
   min-height: 10rem;
 }
 
-.ticker-wrapper {
+.marquee-wrapper {
   width: 100vw;
   position: fixed;
   bottom: 0;
@@ -237,7 +242,7 @@
   overflow: hidden;
 }
 
-.ticker {
+.marquee {
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -253,14 +258,14 @@
           animation: ticker 60s linear infinite;
 }
 
-.ticker a {
+.marquee a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding-right: 0.6em;
 }
 
-.ticker a span {
+.marquee a span {
   padding-left: 0.1em;
 }
 
