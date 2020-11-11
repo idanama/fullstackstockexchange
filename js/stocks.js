@@ -1,3 +1,7 @@
+import stockApi from './api.js'
+import {genericLoaderFill} from './ui.js'
+import {updateGraph} from './graphs.js'
+
 const pageParams = new URLSearchParams(window.location.search).get('symbol');
 
 const performanceMoji = (percent, max = 0.05) => {

@@ -126,3 +126,5 @@ const updateGraph = ({ symbol, data }) => {
     },
   });
 };
+
+export {updateGraph}

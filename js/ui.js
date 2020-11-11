@@ -1,3 +1,5 @@
+import stockApi from './api.js'
+
 const searchBar = document.querySelector('.search-bar');
 const searchButton = searchBar.querySelector('#search-button');
 let searchOpen = false;
@@ -102,3 +104,5 @@ const searchBarLoader = (truth) => {
     searchButton.classList.remove('loader');
   }
 };
+
+export {genericLoaderFill}
