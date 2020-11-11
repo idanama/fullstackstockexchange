@@ -1,0 +1,55 @@
+@import './variables';
+
+.ticker-wrapper {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    height: 3rem;
+    overflow: hidden;
+}
+
+.ticker {
+    height: 100%;
+    display: flex;
+    background-color: white;
+    font-size: 2.8rem;
+    width: fit-content;
+    filter: $shadow;
+
+    a {
+        display: flex;
+        padding-right: 0.6em;
+
+        span {
+            padding-left: 0.1em;
+        }
+    }
+
+    animation:ticker 60s linear infinite;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+// img {
+//     animation: rotateloader 3s cubic-bezier(0, 0.5, 0.6, 1) infinite;
+// }
+// }
+
+// @keyframes rotateloader {
+
+// 0% {
+//     transform: rotate(0deg)
+// }
+
+// 100% {
+//     transform: rotate(360deg)
+// }
+// }

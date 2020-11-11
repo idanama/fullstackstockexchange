@@ -229,6 +229,63 @@
   min-height: 10rem;
 }
 
+.ticker-wrapper {
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  height: 3rem;
+  overflow: hidden;
+}
+
+.ticker {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: white;
+  font-size: 2.8rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+          filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+  -webkit-animation: ticker 60s linear infinite;
+          animation: ticker 60s linear infinite;
+}
+
+.ticker a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 0.6em;
+}
+
+.ticker a span {
+  padding-left: 0.1em;
+}
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

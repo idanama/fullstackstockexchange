@@ -20,6 +20,7 @@ const stockApi = {
   quote: async (query, loader) => apiQuery(`quote/${query}`, loader),
   company: async (query, loader) => apiQuery(`company/profile/${query}`, loader),
   graph: async (query, loader) => apiQuery(`historical-price-full/${query}?serietype=line`, loader),
+  mostActive: async (loader) => apiQuery(`actives`, loader),
 };
 
 export default stockApi;
