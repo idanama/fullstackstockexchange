@@ -1,6 +1,6 @@
 import stockApi from './api.js';
 import Marquee from './Marquee.js';
-import { debounce } from './generic.js';
+import { debounce, urlParams } from './generic.js';
 
 const searchBar = document.querySelector('.search-bar');
 const searchButton = searchBar.querySelector('#search-button');
@@ -19,10 +19,13 @@ const searchBarLoader = (truth) => {
   }
 };
 
-const search = async () => {
-  const query = searchBar.querySelector('input').value;
+const search = async (query) => {
   const res = await stockApi.searchBar(query, searchBarLoader);
   changeSearchBarState(2);
+
+  if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+    urlParams('query', query);
+  }
 
   const list = document.createElement('ul');
 
@@ -80,6 +83,7 @@ const changeSearchBarState = (phase) => {
         .querySelector('.search-results').classList.add('d-none');
       searchBar.classList.remove('table');
       searchBar.classList.add('minimized');
+      searchBar.querySelector('#search').value = null;
       searchOpen = false;
       break;
     case 1:
@@ -98,16 +102,20 @@ const changeSearchBarState = (phase) => {
   }
 };
 
+const searchNow = () => {
+  search(searchBar.querySelector('input').value);
+};
+
 searchButton.addEventListener('click', async (e) => {
   e.preventDefault();
   if (!searchOpen) {
     changeSearchBarState(1);
   } else {
-    search(searchBar.querySelector('input').value);
+    searchNow();
   }
 });
 
-searchForm.addEventListener('input', debounce(search));
+searchForm.addEventListener('input', debounce(searchNow));
 
 searchBar.querySelector('#search-close').addEventListener('click', (e) => {
   e.preventDefault();
@@ -121,6 +129,15 @@ const buildMarquee = async () => {
   document.body.append(marqueeWrapper);
 };
 
+if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+  const query = urlParams('query');
+  if (query) {
+    changeSearchBarState(1);
+    searchBar.querySelector('#search').value = query;
+    search(query);
+  }
+}
+
 buildMarquee();
 
-export { genericLoaderFill };
+export { genericLoaderFill, urlParams };

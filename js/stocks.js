@@ -1,8 +1,7 @@
 import stockApi from './api.js';
 import { genericLoaderFill } from './ui.js';
 import { updateGraph } from './graphs.js';
-
-const pageParams = new URLSearchParams(window.location.search).get('symbol');
+import { urlParams } from './generic.js';
 
 const performanceMoji = (percent, max = 0.05) => {
   const positive = percent > 0;
@@ -112,4 +111,4 @@ const loadCompanyCard = (info) => {
   });
 };
 
-displayCompany(pageParams);
+displayCompany(urlParams('symbol'));

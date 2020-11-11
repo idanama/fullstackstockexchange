@@ -6,4 +6,14 @@ const debounce = (callback, delay = 500) => {
   };
 };
 
-export { debounce };
+const urlParams = (name, value) => {
+  const params = new URLSearchParams(window.location.search);
+  if (name && value) {
+    params.set(name, value);
+    window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+  } else if (name) {
+    return params.get(name);
+  }
+};
+
+export { debounce, urlParams };
