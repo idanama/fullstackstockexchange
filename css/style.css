@@ -448,6 +448,14 @@ button:active {
   padding: 1em 2em;
 }
 
+.search-bar .search-results li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.search-bar .search-results li:last-child {
+  border-bottom: none;
+}
+
 .search-bar .search-results li > a,
 .search-bar .search-results li > div {
   display: -webkit-box;
@@ -457,12 +465,6 @@ button:active {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0.8em 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.search-bar .search-results li > a:last-child,
-.search-bar .search-results li > div:last-child {
-  border-bottom: none;
 }
 
 .search-bar .search-results li > a > div,

@@ -147,17 +147,22 @@ button {
         border-top: $border;
         padding: 1em 2em;
 
+        li {
+            border-bottom: $border;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
         li>a,
         li>div {
             display: flex;
             justify-content: space-between;
 
             padding: 0.8em 0;
-            border-bottom: $border;
 
-            &:last-child {
-                border-bottom: none;
-            }
+
 
             >div {
                 div {
