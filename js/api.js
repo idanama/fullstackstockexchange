@@ -1,3 +1,5 @@
+import { splitArray } from './generic.js';
+
 const apiUrl = 'https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/';
 
 const apiQuery = async (url, loader) => {
@@ -15,12 +17,33 @@ const apiQuery = async (url, loader) => {
   }
 };
 
+// tested only on company/profile endpoint
+const joinResult = (results) => {
+  let parsedResult = [];
+  [...results].forEach((result) => {
+    if ('symbol' in result) {
+      parsedResult.push(result);
+    } else {
+      parsedResult = parsedResult.concat(result.companyProfiles);
+    }
+  });
+  return parsedResult;
+};
+
 const stockApi = {
-  searchBar: async (query, loader) => apiQuery(`search?limit=9&exchange=NASDAQ&query=${query}`, loader),
+  searchBar: async (query, loader) => apiQuery(`search?limit=10&exchange=NASDAQ&query=${query}`, loader),
   quote: async (query, loader) => apiQuery(`quote/${query}`, loader),
-  company: async (query, loader) => apiQuery(`company/profile/${query}`, loader),
+  company: async (query, loader) => {
+    if (Array.isArray(query)) {
+      const queries = splitArray(query, 3);
+      return Promise
+        .all(queries.map((q) => apiQuery(`company/profile/${q}`, loader)))
+        .then((results) => joinResult(results));
+    }
+    return apiQuery(`company/profile/${query}`, loader);
+  },
   graph: async (query, loader) => apiQuery(`historical-price-full/${query}?serietype=line`, loader),
-  mostActive: async (loader) => apiQuery(`actives`, loader),
+  mostActive: async (loader) => apiQuery('actives', loader),
 };
 
 export default stockApi;

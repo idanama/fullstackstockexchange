@@ -19,60 +19,6 @@ const searchBarLoader = (truth) => {
   }
 };
 
-const search = async (query) => {
-  const res = await stockApi.searchBar(query, searchBarLoader);
-  changeSearchBarState(2);
-
-  if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
-    urlParams('query', query);
-  }
-
-  const list = document.createElement('ul');
-
-  if (res.length > 0) {
-    res.forEach((stock) => {
-      const li = document.createElement('li');
-      li.id = `result-${stock.symbol}`;
-      li.innerHTML = `
-        <a href="/company.html?symbol=${stock.symbol}">
-          <div>
-            <div class="image"></div>
-            <div class="name">${stock.name}</div>
-          </div>
-          <div>
-            <div class="change"></div>
-            <div class="symbol">${stock.symbol}</div>
-          </div>
-        </a>
-        `;
-      list.appendChild(li);
-    });
-  } else {
-    const li = document.createElement('li');
-    li.innerHTML = '<div><div>No results found</div><div>🧐</div></div>';
-    list.appendChild(li);
-  }
-  searchBar.querySelector('.search-results').innerHTML = null;
-  searchBar.querySelector('.search-results').appendChild(list);
-
-  if (res.length > 0) {
-    for (let i = 0; i < res.length; i += 1) {
-      const quote = await stockApi.company(res[i].symbol);
-      const stock = {
-        ...quote.profile,
-        symbol: quote.symbol,
-      };
-      const li = document.querySelector(`#result-${stock.symbol}`);
-      li.querySelector('.change').innerHTML = `
-            <span class="${stock.changes >= 0 ? 'good' : 'bad'}">
-            ${(((stock.changes / (stock.price - stock.changes)) * 100) || 0).toFixed(2)}%
-            </span>
-            `;
-      li.querySelector('.image').innerHTML = `<img src="${stock.image}">`;
-    }
-  }
-};
-
 const changeSearchBarState = (phase) => {
   switch (phase) {
     case 0:
@@ -100,6 +46,66 @@ const changeSearchBarState = (phase) => {
     default:
       break;
   }
+};
+
+const updateSearchResults = async (symbols) => {
+  const quotes = await stockApi.company(symbols);
+  (quotes).forEach((quote) => {
+    const stock = {
+      ...quote.profile,
+      symbol: quote.symbol,
+    };
+    const li = document.getElementById(`result-${stock.symbol}`);
+    if (li) {
+      li.querySelector('.change').innerHTML = `
+                <span class="${stock.changes >= 0 ? 'good' : 'bad'}">
+                ${(((stock.changes / (stock.price - stock.changes)) * 100) || 0).toFixed(2)}%
+                </span>
+                `;
+      li.querySelector('.image').innerHTML = `<img src="${stock.image}">`;
+    }
+  });
+};
+
+const search = async (query) => {
+  const res = await stockApi.searchBar(query, searchBarLoader);
+  changeSearchBarState(2);
+
+  if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+    urlParams('query', query);
+  }
+
+  const list = document.createElement('ul');
+
+  if (res.length > 0) {
+    res.forEach((stock) => {
+      const li = document.createElement('li');
+      li.id = `result-${stock.symbol}`;
+      li.classList.add('search-result');
+      li.innerHTML = `
+        <a href="/company.html?symbol=${stock.symbol}">
+          <div>
+            <div class="image"></div>
+            <div class="name">${stock.name}</div>
+          </div>
+          <div>
+            <div class="change"></div>
+            <div class="symbol">${stock.symbol}</div>
+          </div>
+        </a>
+        `;
+      list.appendChild(li);
+    });
+  } else {
+    const li = document.createElement('li');
+    li.innerHTML = '<div><div>No results found</div><div>🧐</div></div>';
+    list.appendChild(li);
+  }
+  searchBar.querySelector('.search-results').innerHTML = null;
+  searchBar.querySelector('.search-results').appendChild(list);
+
+  const resultsToUpdate = res.map((item) => item.symbol);
+  updateSearchResults(resultsToUpdate);
 };
 
 const searchNow = () => {
