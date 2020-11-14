@@ -1,5 +1,5 @@
 import stockApi from './api.js';
-import Marquee from './Marquee.js';
+import Marquee from './components/Marquee.js';
 import { debounce, urlParams } from './generic.js';
 
 const searchBar = document.querySelector('.search-bar');
@@ -129,10 +129,7 @@ searchBar.querySelector('#search-close').addEventListener('click', (e) => {
 });
 
 const buildMarquee = async () => {
-  const marqueeWrapper = document.createElement('div');
-  marqueeWrapper.classList.add('marquee-wrapper');
-  marqueeWrapper.append(await new Marquee(marqueeWrapper).build());
-  document.body.append(marqueeWrapper);
+  const marquee = await new Marquee(document.querySelector('.marquee-wrapper'));
 };
 
 if (window.location.pathname === '/index.html' || window.location.pathname === '/') {

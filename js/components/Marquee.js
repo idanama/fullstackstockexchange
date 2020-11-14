@@ -1,9 +1,10 @@
-import stockApi from './api.js';
+import stockApi from '../api.js';
 
 class Marquee {
   constructor(el) {
     this.el = el;
     this.list = [];
+    this.build();
   }
 
   async build() {
