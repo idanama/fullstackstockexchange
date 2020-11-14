@@ -88,7 +88,7 @@ const loadCompanyCard = (info) => {
         extraContent += `<div><span class="key">"${key}":\t</span><span class="value"><a href="${info[key]}" target="_blank">${info[key]}</a></span></div>\n`;
         break;
       case 'mktCap':
-        extraContent += `<div><span class="key">"${key}":\t</span><span class="value"><a href="${info[key]}" target="_blank">${info[key]}</a></span>\t<span class="comment">//\t${Number.parseFloat(info[key]).toLocaleString()} ${info.currency || ''}</span></div>\n`;
+        extraContent += `<div><span class="key">"${key}":\t</span><span class="value">${info[key]}</span>\t<span class="comment">//\t${Number.parseFloat(info[key]).toLocaleString()} ${info.currency || ''}</span></div>\n`;
         break;
       case 'phone':
         extraContent += `<div><span class="key">"${key}":\t</span><span class="value"><a href="tel:${info[key]}">${info[key]}</a></span></div>\n`;
