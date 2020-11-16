@@ -22,7 +22,7 @@ html {
 
 body {
     font-family: 'Lato', sans-serif;
-    background-color: #EDEDED;
+    background-color: $bgColor
 }
 
 .main-container {
@@ -224,4 +224,8 @@ button {
 
 .bad {
     color: $bad;
+}
+
+.highlighted {
+    background-color: $bgColor;
 }

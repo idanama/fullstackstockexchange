@@ -1,21 +1,24 @@
 import stockApi from '../api.js';
 
 class SearchList {
-  constructor(el, list) {
+  constructor(el, list, query) {
     this.el = el;
+    this.ul;
     this.list = list;
+    this.query = query;
     this.build();
   }
 
   build() {
-    const list = document.createElement('ul');
+    this.ul = document.createElement('ul');
 
     if (this.list.length > 0) {
       this.list.forEach((stock) => {
         const li = document.createElement('li');
         li.id = `result-${stock.symbol}`;
         li.classList.add('search-result');
-        li.innerHTML = `
+
+        let content = `
         <a href="/company.html?symbol=${stock.symbol}">
           <div>
             <div class="image"></div>
@@ -27,14 +30,22 @@ class SearchList {
           </div>
         </a>
         `;
-        list.appendChild(li);
+        const re = new RegExp(`(<div.*>.*)(${this.query})(.*</div>)`, 'gi');
+        const rw = `  
+        $1<span class="highlighted">$2</span>$3
+        `;
+        content = content.replace(re, rw);
+        console.log(re);
+
+        li.innerHTML = content;
+        this.ul.appendChild(li);
       });
     } else {
       const li = document.createElement('li');
       li.innerHTML = '<div><div>No results found</div><div>🧐</div></div>';
-      list.appendChild(li);
+      this.ul.appendChild(li);
     }
-    this.el.appendChild(list);
+    this.el.appendChild(this.ul);
 
     this.update();
   }

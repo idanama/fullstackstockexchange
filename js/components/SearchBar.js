@@ -93,7 +93,7 @@ class SearchBar {
     
 
     this.searchResults.innerHTML = null;
-    const list = new SearchList(this.searchResults,res)
+    const list = new SearchList(this.searchResults,res,query)
   }
 
   loader = (truth) => {
