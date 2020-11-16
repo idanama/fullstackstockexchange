@@ -112,11 +112,13 @@ class SearchBar {
         this.el.classList.add('minimized');
         this.el.classList.remove('table');
         this.searchInput.value = null;
+        this.searchResults.innerHTML = null;
         urlParams('query', null);
         break;
       case 1:
         this.el.classList.remove('minimized');
         this.el.classList.remove('table');
+        this.searchResults.innerHTML = null;
         setTimeout(() => this.searchInput.focus(),0)
         break;
       case 2:
