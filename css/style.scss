@@ -91,6 +91,13 @@ button {
 
         width: $btnSize;
         border-radius: $radius;
+
+        &.small {
+            width: $btnSize*0.7;
+            height: $btnSize*0.7;
+            padding: 0.7em;
+            margin: 0 0.5em
+        }
     }
 
     &:active {
@@ -117,6 +124,10 @@ button {
 
     button {
         filter: none;
+
+        &.small {
+            filter: $shadowDark;
+        }
     }
 
     input {

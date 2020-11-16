@@ -27,6 +27,7 @@ class SearchList {
           <div>
             <div class="change"></div>
             <div class="symbol">${stock.symbol}</div>
+            <button class="circle small" id="compare-${stock.symbol}"><img src="/res/icons/plus.svg" alt="Compare"></button>
           </div>
         </a>
         `;
@@ -36,6 +37,12 @@ class SearchList {
         `;
         content = content.replace(re, rw);
         li.innerHTML = content;
+
+        li.querySelector(`#compare-${stock.symbol}`).addEventListener('click', (e) => {
+          e.preventDefault();
+          this.compare(stock);
+        });
+
         this.ul.appendChild(li);
       });
     } else {
@@ -46,6 +53,10 @@ class SearchList {
     this.el.appendChild(this.ul);
 
     this.update();
+  }
+
+  compare(company) {
+    console.log(company);
   }
 
   async update() {

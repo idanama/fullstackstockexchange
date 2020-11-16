@@ -387,6 +387,13 @@ button.circle {
   border-radius: 2em;
 }
 
+button.circle.small {
+  width: 2.8em;
+  height: 2.8em;
+  padding: 0.7em;
+  margin: 0 0.5em;
+}
+
 button:active {
   -webkit-filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1));
           filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1));
@@ -413,6 +420,11 @@ button:active {
 .search-bar button {
   -webkit-filter: none;
           filter: none;
+}
+
+.search-bar button.small {
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
 }
 
 .search-bar input {
