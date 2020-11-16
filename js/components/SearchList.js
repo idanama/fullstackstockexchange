@@ -35,8 +35,6 @@ class SearchList {
         $1<span class="highlighted">$2</span>$3
         `;
         content = content.replace(re, rw);
-        console.log(re);
-
         li.innerHTML = content;
         this.ul.appendChild(li);
       });
