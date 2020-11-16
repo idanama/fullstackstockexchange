@@ -87,8 +87,8 @@ class SearchBar {
       return this.state(1);
     }
 
-    this.state(2);
     const res = await stockApi.searchBar(query, this.loader);
+    this.state(2);
 
     
 
