@@ -114,11 +114,6 @@ button {
 
     filter: $shadow;
 
-    &.minimized {
-        grid-template-columns: $btnSize;
-        width: auto;
-        min-width: auto;
-    }
 
     button {
         filter: none;
@@ -136,63 +131,84 @@ button {
         display: flex;
     }
 
+    #search-results {
+        display: none;
+    }
+
+
+    &.minimized {
+        grid-template-columns: $btnSize;
+        width: auto;
+        min-width: auto;
+
+        #search-close,
+        #search,
+        #search-results {
+            display: none;
+        }
+    }
+
     &.table {
         z-index: 2;
         grid-template-columns: $btnSize auto $btnSize;
         grid-template-rows: $lineHeight auto;
         min-height: 8em;
-    }
 
-    .search-results {
-        border-top: $border;
-        padding: 1em 2em;
-
-        li {
-            border-bottom: $border;
-
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-
-        li>a,
-        li>div {
+        #search-close,
+        #search,
+        #search-results {
             display: flex;
-            justify-content: space-between;
+        }
 
-            padding: 0.8em 0;
-
-
-
-            >div {
-                div {
-                    padding-left: 0.5em;
-                }
-
-                display: flex;
-                align-items: center;
+    }
 
 
+}
 
+#search-results>ul {
+    width: 100%;
+    border-top: $border;
+    padding: 1em 2em;
 
-            }
+    li {
+        border-bottom: $border;
 
-            img {
-                max-height: 1.5em;
-                object-fit: cover;
-            }
-
-            .image {
-                overflow: hidden;
-                height: 1.5em;
-                width: 1.5em;
-                border-radius: 50%;
-                padding-left: 0;
-            }
-
+        &:last-child {
+            border-bottom: none;
         }
     }
 
+    li>a,
+    li>div {
+        display: flex;
+        justify-content: space-between;
+
+        padding: 0.8em 0;
+
+
+
+        >div {
+            div {
+                padding-left: 0.5em;
+            }
+
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            max-height: 1.5em;
+            object-fit: cover;
+        }
+
+        .image {
+            overflow: hidden;
+            height: 1.5em;
+            width: 1.5em;
+            border-radius: 50%;
+            padding-left: 0;
+        }
+    }
 }
 
 

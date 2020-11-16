@@ -2,7 +2,7 @@ import { splitArray } from './generic.js';
 
 const apiUrl = 'https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/';
 
-const apiQuery = async (url, loader) => {
+async function apiQuery(url, loader) {
   try {
     if (loader) {
       loader(true);
@@ -15,7 +15,7 @@ const apiQuery = async (url, loader) => {
   } catch (e) {
     return console.error(e);
   }
-};
+}
 
 // tested only on company/profile endpoint
 const joinResult = (results) => {
@@ -38,7 +38,8 @@ const stockApi = {
       const queries = splitArray(query, 3);
       return Promise
         .all(queries.map((q) => apiQuery(`company/profile/${q}`, loader)))
-        .then((results) => joinResult(results));
+        .then((results) => joinResult(results))
+        .catch((e) => console.error(e));
     }
     return apiQuery(`company/profile/${query}`, loader);
   },

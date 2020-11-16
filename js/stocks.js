@@ -1,7 +1,8 @@
 import stockApi from './api.js';
-import { genericLoaderFill } from './ui.js';
 import { updateGraph } from './graphs.js';
 import { urlParams } from './generic.js';
+
+const genericLoaderFill = '<div class="flex-center loader"><img src="/res/icons/loader.svg"></div>';
 
 const performanceMoji = (percent, max = 0.05) => {
   const positive = percent > 0;

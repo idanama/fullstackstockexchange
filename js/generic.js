@@ -1,22 +1,17 @@
-const debounce = (callback, delay = 500) => {
-  let timeout;
-  return () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(callback, delay);
-  };
-};
-
-const urlParams = (name, value) => {
+function urlParams(name, value) {
   const params = new URLSearchParams(window.location.search);
   if (name && value) {
     params.set(name, value);
     window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
-  } else if (name) {
+  } if (name && value === null) {
+    params.delete(name);
+    window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+  } else {
     return params.get(name);
   }
-};
+}
 
-const splitArray = (array, limit) => {
+function splitArray(array, limit) {
   const result = [];
   let ii = 0;
   for (let i = 0; i < (array.length / limit); i += 1) {
@@ -24,6 +19,6 @@ const splitArray = (array, limit) => {
     ii += limit;
   }
   return result;
-};
+}
 
-export { debounce, urlParams, splitArray };
+export { urlParams, splitArray };
