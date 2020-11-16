@@ -367,14 +367,29 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
   -webkit-transition-duration: 200ms;
           transition-duration: 200ms;
   -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
           filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+  border-radius: 2em;
+}
+
+button img {
+  width: 1.3em;
+  height: 1.3em;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+button.highlighted {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 button:focus {
@@ -384,7 +399,6 @@ button:focus {
 button.circle {
   overflow: hidden;
   width: 4em;
-  border-radius: 2em;
 }
 
 button.circle.small {
@@ -418,6 +432,7 @@ button:active {
 }
 
 .search-bar button {
+  font-size: 0.8em;
   -webkit-filter: none;
           filter: none;
 }
@@ -425,6 +440,7 @@ button:active {
 .search-bar button.small {
   -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
           filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .search-bar input {
@@ -439,7 +455,8 @@ button:active {
   display: flex;
 }
 
-.search-bar #search-results {
+.search-bar #search-results,
+.search-bar #search-compare {
   display: none;
 }
 
@@ -452,7 +469,8 @@ button:active {
 
 .search-bar.minimized #search-close,
 .search-bar.minimized #search,
-.search-bar.minimized #search-results {
+.search-bar.minimized #search-results,
+.search-bar.minimized #search-compare {
   display: none;
 }
 
@@ -467,7 +485,8 @@ button:active {
 
 .search-bar.table #search-close,
 .search-bar.table #search,
-.search-bar.table #search-results {
+.search-bar.table #search-results,
+.search-bar.table #search-compare {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -550,5 +569,33 @@ button:active {
 
 .highlighted {
   background-color: #EDEDED;
+}
+
+.buttons {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#search-compare {
+  margin: 0 0.5em 0.5em 0.5em;
+}
+
+#search-compare .buttons button {
+  margin: 0.5em;
+  font-size: 0.6em;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
+}
+
+.rotate45 {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 /*# sourceMappingURL=style.css.map */

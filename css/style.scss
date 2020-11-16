@@ -76,11 +76,25 @@ button {
     padding: 1em;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+        width: 1.3em;
+        height: 1.3em;
+        transition-duration: 300ms;
+    }
 
     cursor: pointer;
     transition-duration: 200ms;
     filter: $shadow;
+
+    border-radius: $radius;
+
+    &.highlighted {
+        border: $border;
+        background-color: white;
+    }
 
     &:focus {
         outline: 0;
@@ -90,7 +104,6 @@ button {
         overflow: hidden;
 
         width: $btnSize;
-        border-radius: $radius;
 
         &.small {
             width: $btnSize*0.7;
@@ -103,6 +116,7 @@ button {
     &:active {
         filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1));
     }
+
 }
 
 
@@ -123,10 +137,13 @@ button {
 
 
     button {
+        font-size: 0.8em;
+
         filter: none;
 
         &.small {
             filter: $shadowDark;
+            border: $border;
         }
     }
 
@@ -142,7 +159,8 @@ button {
         display: flex;
     }
 
-    #search-results {
+    #search-results,
+    #search-compare {
         display: none;
     }
 
@@ -154,7 +172,8 @@ button {
 
         #search-close,
         #search,
-        #search-results {
+        #search-results,
+        #search-compare {
             display: none;
         }
     }
@@ -167,7 +186,8 @@ button {
 
         #search-close,
         #search,
-        #search-results {
+        #search-results,
+        #search-compare {
             display: flex;
         }
 
@@ -239,4 +259,27 @@ button {
 
 .highlighted {
     background-color: $bgColor;
+}
+
+.buttons {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#search-compare {
+    margin: 0 0.5em 0.5em 0.5em;
+
+    .buttons {
+        button {
+            margin: 0.5em;
+            font-size: 0.6em;
+            filter: $shadowDark;
+
+        }
+    }
+}
+
+.rotate45 {
+    transform: rotate(45deg);
 }

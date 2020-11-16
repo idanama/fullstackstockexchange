@@ -1,11 +1,11 @@
 import stockApi from '../api.js';
 
 class SearchList {
-  constructor(el, list, query) {
+  constructor(el, list, query, compare) {
     this.el = el;
-    this.ul;
     this.list = list;
     this.query = query;
+    this.compare = compare;
     this.build();
   }
 
@@ -38,9 +38,9 @@ class SearchList {
         content = content.replace(re, rw);
         li.innerHTML = content;
 
-        li.querySelector(`#compare-${stock.symbol}`).addEventListener('click', (e) => {
+        li.querySelector('button').addEventListener('click', (e) => {
           e.preventDefault();
-          this.compare(stock);
+          this.compare(stock.symbol);
         });
 
         this.ul.appendChild(li);
@@ -53,10 +53,6 @@ class SearchList {
     this.el.appendChild(this.ul);
 
     this.update();
-  }
-
-  compare(company) {
-    console.log(company);
   }
 
   async update() {

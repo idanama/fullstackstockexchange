@@ -2,6 +2,7 @@ import { urlParams } from '../generic.js';
 import stockApi from '../api.js';
 
 import SearchList from './SearchList.js'
+import CompareList from './CompareList.js'
 
 class SearchBar {
   constructor(el) {
@@ -12,6 +13,7 @@ class SearchBar {
     this.searchResults;
     this.searchInput;
     this.timeout;
+    this.compareButtons;
     this.build();
     this.onLoad();
   }
@@ -42,6 +44,10 @@ class SearchBar {
 
     this.form.append(this.searchButton, this.searchInput, this.searchCloseButton);
 
+    this.searchCompare = document.createElement('div');
+    this.searchCompare.id='search-compare';
+    this.compareButtons = new CompareList(this.searchCompare,this.compare);
+
     this.searchResults = document.createElement('div');
     this.searchResults.id = 'search-results';
 
@@ -62,7 +68,20 @@ class SearchBar {
       this.state(0);
     })
 
-    this.el.append(this.form, this.searchResults);
+    this.el.append(this.form,this.searchCompare, this.searchResults);
+  }
+
+  compare = (symbol) => {
+    if (this.compareButtons.list.includes(symbol)) {
+      this.searchResults.querySelector(`#compare-${symbol} img`).classList.remove('rotate45');
+      this.compareButtons.remove(symbol);
+      return false
+    } else {
+      this.searchResults.querySelector(`#compare-${symbol} img`).classList.add('rotate45');
+      this.compareButtons.add(symbol);
+      return true
+    }
+
   }
 
   search = async (query) => {
@@ -93,7 +112,7 @@ class SearchBar {
     
 
     this.searchResults.innerHTML = null;
-    const list = new SearchList(this.searchResults,res,query)
+    const list = new SearchList(this.searchResults,res,query,this.compare)
   }
 
   loader = (truth) => {
