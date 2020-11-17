@@ -6,9 +6,7 @@ function urlParams(name, value) {
   } if (name && value === null) {
     params.delete(name);
     window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
-  } else {
-    return params.get(name);
-  }
+  } else return params.get(name);
 }
 
 function splitArray(array, limit) {
