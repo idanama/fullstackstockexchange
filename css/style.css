@@ -318,6 +318,7 @@ body {
 
 .main-container {
   padding: 2em 2.5em;
+  min-height: 100vh;
 }
 
 nav {
@@ -603,5 +604,11 @@ button:active {
 .rotate45 {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
+}
+
+.footer {
+  padding-bottom: 5rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
 /*# sourceMappingURL=style.css.map */
