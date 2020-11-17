@@ -1,13 +1,15 @@
 @import './variables';
-
+$cardWidth: 605px;
 
 .monitor {
     display: grid;
+    grid-template-columns: repeat(2, minmax(300px, $cardWidth));
     padding: 2em 0;
+    gap: 2em;
 }
 
 .card-container {
-    max-width: 605px;
+    max-width: $cardWidth;
 }
 
 .card {

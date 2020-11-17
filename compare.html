@@ -41,10 +41,12 @@
             Chart.defaults.global.elements.point.backgroundColor = 'none';
             Chart.defaults.global.elements.line.tension = 0.3;
 
-            const cardContainer = document.createElement('div')
-            cardContainer.classList.add('card-container');
-            const card = new CompanyInfo(cardContainer,urlParams('symbol'));
-            document.querySelector('#monitor').append(cardContainer);
+            urlParams('symbols').split(',').forEach((symbol) => {
+                const cardContainer = document.createElement('div')
+                cardContainer.classList.add('card-container');
+                const card = new CompanyInfo(cardContainer,symbol);
+                document.querySelector('#monitor').append(cardContainer);
+            })
         })();
     </script>
 

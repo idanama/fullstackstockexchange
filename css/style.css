@@ -38,7 +38,10 @@
 .monitor {
   display: -ms-grid;
   display: grid;
+  -ms-grid-columns: (minmax(300px, 605px))[2];
+      grid-template-columns: repeat(2, minmax(300px, 605px));
   padding: 2em 0;
+  gap: 2em;
 }
 
 .card-container {
@@ -372,6 +375,8 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
   cursor: pointer;
   -webkit-transition-duration: 200ms;
           transition-duration: 200ms;
@@ -388,7 +393,7 @@ button img {
 }
 
 button.highlighted {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 
@@ -438,6 +443,7 @@ button:active {
 }
 
 .search-bar button.small {
+  background-color: white;
   -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
           filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
   border: 1px solid rgba(0, 0, 0, 0.1);

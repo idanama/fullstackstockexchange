@@ -77,6 +77,10 @@ class SearchBar {
       this.compareButtons.remove(symbol);
       return false
     } else {
+      if (this.compareButtons.list.length > 3) {
+        // todo: feedback to user, max 
+        return false
+      }
       this.searchResults.querySelector(`#compare-${symbol} img`).classList.add('rotate45');
       this.compareButtons.add(symbol);
       return true

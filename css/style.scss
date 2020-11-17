@@ -79,6 +79,8 @@ button {
     justify-content: space-around;
     align-items: center;
 
+    transition-duration: 300ms;
+
     img {
         width: 1.3em;
         height: 1.3em;
@@ -92,7 +94,7 @@ button {
     border-radius: $radius;
 
     &.highlighted {
-        border: $border;
+        border: $borderDarker;
         background-color: white;
     }
 
@@ -138,10 +140,10 @@ button {
 
     button {
         font-size: 0.8em;
-
         filter: none;
 
         &.small {
+            background-color: white;
             filter: $shadowDark;
             border: $border;
         }

@@ -15,8 +15,9 @@ class CompareList {
     this.compareButton.classList.add('circle', 'highlighted');
     this.compareButton.id = 'compare';
     this.compareButton.innerHTML = '<img src="/res/icons/arrow-right.svg" alt="Compare">';
-    this.compareButton.addEventListener('click', () => {
-      console.log('compare', this.list);
+    this.compareButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = `/compare.html?symbols=${this.list}`;
     });
     this.buttons.append(this.compareButton);
     this.el.append(this.buttons);
