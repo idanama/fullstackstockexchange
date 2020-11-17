@@ -43,9 +43,11 @@ class CompareList {
 
   onChange() {
     if (this.list.length < 1) {
-      this.el.style.display = 'none';
+      this.el.classList.remove('show');
+      this.compareButton.remove();
     } else {
-      this.el.style.display = 'inline';
+      this.el.classList.add('show');
+      this.buttons.append(this.compareButton);
     }
   }
 }

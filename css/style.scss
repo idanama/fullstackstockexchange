@@ -126,21 +126,29 @@ button {
 
 
 .search-bar {
+
+    transition-duration: 300ms;
+
     display: flex;
     flex-direction: column;
-    // transition: flex-grow 400ms;
+
     position: absolute;
     width: 100%;
     max-width: 30rem;
-    min-width: 12em;
+    max-height: $btnSize;
     border-radius: $radius;
     background-color: white;
 
     filter: $shadow;
 
+    form {
+        padding: 0 0.2em;
+    }
+
 
     button {
         font-size: 0.8em;
+        background-color: transparent;
         filter: none;
 
         &.small {
@@ -151,10 +159,9 @@ button {
     }
 
     input {
-        // display: block;
         border: none;
+        min-width: 1px;
         width: 100%;
-
         outline: none;
     }
 
@@ -162,16 +169,21 @@ button {
         display: flex;
     }
 
-    #search-results,
-    #search-compare {
+    #search-compare,
+    #search-results {
         display: none;
     }
 
 
     &.minimized {
+        max-width: $btnSize;
         grid-template-columns: $btnSize;
         width: auto;
         min-width: auto;
+
+        form {
+            padding: 0;
+        }
 
         #search-close,
         #search,
@@ -186,11 +198,13 @@ button {
         grid-template-columns: $btnSize auto $btnSize;
         grid-template-rows: $lineHeight auto;
         min-height: 8em;
+        max-height: 100vh;
+        transition-duration: 200ms;
 
+        #search-compare,
         #search-close,
         #search,
-        #search-results,
-        #search-compare {
+        #search-results {
             display: flex;
         }
 
@@ -272,6 +286,15 @@ button {
 
 #search-compare {
     margin: 0 0.5em 0.5em 0.5em;
+    max-height: 0em;
+    min-height: 0em;
+    overflow: hidden;
+    transition-duration: 300ms;
+
+    &.show {
+        min-height: $btnSize*0.8;
+        max-height: 15em;
+    }
 
     .buttons {
         button {

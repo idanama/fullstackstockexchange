@@ -420,6 +420,8 @@ button:active {
 }
 
 .search-bar {
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -430,15 +432,20 @@ button:active {
   position: absolute;
   width: 100%;
   max-width: 30rem;
-  min-width: 12em;
+  max-height: 4em;
   border-radius: 2em;
   background-color: white;
   -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
           filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
 }
 
+.search-bar form {
+  padding: 0 0.2em;
+}
+
 .search-bar button {
   font-size: 0.8em;
+  background-color: transparent;
   -webkit-filter: none;
           filter: none;
 }
@@ -452,6 +459,7 @@ button:active {
 
 .search-bar input {
   border: none;
+  min-width: 1px;
   width: 100%;
   outline: none;
 }
@@ -462,16 +470,21 @@ button:active {
   display: flex;
 }
 
-.search-bar #search-results,
-.search-bar #search-compare {
+.search-bar #search-compare,
+.search-bar #search-results {
   display: none;
 }
 
 .search-bar.minimized {
+  max-width: 4em;
   -ms-grid-columns: 4em;
       grid-template-columns: 4em;
   width: auto;
   min-width: auto;
+}
+
+.search-bar.minimized form {
+  padding: 0;
 }
 
 .search-bar.minimized #search-close,
@@ -488,12 +501,15 @@ button:active {
   -ms-grid-rows: 2em auto;
       grid-template-rows: 2em auto;
   min-height: 8em;
+  max-height: 100vh;
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
 }
 
+.search-bar.table #search-compare,
 .search-bar.table #search-close,
 .search-bar.table #search,
-.search-bar.table #search-results,
-.search-bar.table #search-compare {
+.search-bar.table #search-results {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -592,6 +608,16 @@ button:active {
 
 #search-compare {
   margin: 0 0.5em 0.5em 0.5em;
+  max-height: 0em;
+  min-height: 0em;
+  overflow: hidden;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+#search-compare.show {
+  min-height: 3.2em;
+  max-height: 15em;
 }
 
 #search-compare .buttons button {
