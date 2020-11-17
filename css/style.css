@@ -113,16 +113,16 @@
 .card .extra-toggle {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   cursor: pointer;
   -webkit-transition-duration: 1000ms;
           transition-duration: 1000ms;
 }
 
 .card .extra-toggle.open {
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(180deg);
-          transform: translateX(-50%) translateY(-50%) rotate(180deg);
+  -webkit-transform: translateX(-50%) rotate(180deg);
+          transform: translateX(-50%) rotate(180deg);
 }
 
 .extra-wrapper {

@@ -59,13 +59,13 @@ $cardWidth: 605px;
     .extra-toggle {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%);
         cursor: pointer;
 
         transition-duration: 1000ms;
 
         &.open {
-            transform: translateX(-50%) translateY(-50%) rotate(180deg);
+            transform: translateX(-50%) rotate(180deg);
         }
     }
 
