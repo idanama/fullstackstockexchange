@@ -7,6 +7,5 @@ import Footer from './components/Footer.js';
   const searchBar = new SearchBar(document.querySelector('.search-bar'));
   const footerContainer = document.createElement('div');
   document.body.append(footerContainer);
-  console.log(footerContainer);
   const footer = new Footer(footerContainer);
 })();
