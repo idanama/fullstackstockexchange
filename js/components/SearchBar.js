@@ -69,6 +69,12 @@ class SearchBar {
     })
 
     this.el.append(this.form,this.searchCompare, this.searchResults);
+    this.preloadLoader();
+  }
+
+  preloadLoader() {
+    const preload = document.createElement('img');
+    preload.src="/res/icons/loader.svg";
   }
 
   compare = (symbol) => {
@@ -124,8 +130,10 @@ class SearchBar {
       this.searchButton.querySelector('img').src = '/res/icons/loader.svg';
       this.searchButton.classList.add('loader');
     } else {
-      this.searchButton.querySelector('img').src = '/res/icons/search.svg';
       this.searchButton.classList.remove('loader');
+      setTimeout(()=>{
+        this.searchButton.querySelector('img').src = '/res/icons/search.svg';
+      },700)
     }
   }
 
