@@ -17,9 +17,14 @@ class Marquee {
       const ii = i % (this.list.length - 1);
 
       const li = document.createElement('li');
+
       li.innerHTML = `
-                <a href="/company.html?symbol=${this.list[ii].ticker}">${this.list[ii].ticker}\t
-                <span class="${this.list[ii].changesPercentage.indexOf('-') > 0 ? 'bad' : 'good'}">${this.list[ii].changesPercentage}</span></a>
+                <a href="/company.html?symbol=${this.list[ii].ticker}">
+                  ${this.list[ii].ticker}\t
+                  <span class="${this.list[ii].changesPercentage.indexOf('-') > 0 ? 'bad' : 'good'}">
+                    ${this.list[ii].changesPercentage}
+                  </span>
+                </a>
               `;
       marquee.appendChild(li);
     }
