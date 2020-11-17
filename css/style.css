@@ -633,8 +633,13 @@ button:active {
 }
 
 .footer {
-  padding-bottom: 5rem;
+  -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+          filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
   text-align: center;
   font-size: 1.2rem;
+  height: 3rem;
+  background-color: white;
 }
 /*# sourceMappingURL=style.css.map */

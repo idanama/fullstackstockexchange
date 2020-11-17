@@ -5,8 +5,6 @@
 @import './stocks';
 @import './marquee';
 
-
-
 html {
     box-sizing: border-box;
 }
@@ -17,12 +15,13 @@ html {
     box-sizing: inherit;
 }
 
-
-
-
 body {
     font-family: 'Lato', sans-serif;
     background-color: $bgColor
+}
+
+b {
+    // font-weight: bold;
 }
 
 .main-container {
@@ -310,7 +309,11 @@ button {
 }
 
 .footer {
-    padding-bottom: 5rem;
+    filter: $shadow;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
     text-align: center;
     font-size: 1.2rem;
+    height: 3rem;
+    background-color: white;
 }
