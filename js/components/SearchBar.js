@@ -79,7 +79,9 @@ class SearchBar {
 
   compare = (symbol) => {
     if (this.compareButtons.list.includes(symbol)) {
-      this.searchResults.querySelector(`#compare-${symbol} img`).classList.remove('rotate45');
+      if (this.searchResults.querySelector(`#compare-${symbol} img`)) {
+        this.searchResults.querySelector(`#compare-${symbol} img`).classList.remove('rotate45');
+      } 
       this.compareButtons.remove(symbol);
       return false
     } else {
