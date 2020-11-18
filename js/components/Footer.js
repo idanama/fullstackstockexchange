@@ -10,7 +10,7 @@ class Footer {
   build() {
     this.footer = document.createElement('footer');
     this.footer.classList.add('footer');
-    this.footer.innerHTML = `Created with Vanilla Js, Scss and Chart.js\t${percentMoji(Math.random(), 1)}\tby Idan Amati at &lt;ITC&gt; Full Stack Bootcamp 2020`;
+    this.footer.innerHTML = `<span>Created with Vanilla Js, Scss and Chart.js\t${percentMoji(Math.random(), 1)}\t</span><span>by Idan Amati at &lt;ITC&gt; Full Stack Bootcamp 2020<span>`;
     this.el.append(this.footer);
   }
 }

@@ -310,10 +310,15 @@ button {
 
 .footer {
     filter: $shadow;
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
+    padding: 1rem 1rem 1.5rem 1rem;
     text-align: center;
     font-size: 1.2rem;
-    height: 4rem;
     background-color: white;
+    line-height: 1.5em;
+
+    @media (max-width: 2* $cardWidth) {
+        span {
+            display: block;
+        }
+    }
 }

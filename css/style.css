@@ -642,11 +642,16 @@ button:active {
 .footer {
   -webkit-filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
           filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
-  padding-top: 1rem;
-  padding-bottom: 1.5rem;
+  padding: 1rem 1rem 1.5rem 1rem;
   text-align: center;
   font-size: 1.2rem;
-  height: 4rem;
   background-color: white;
+  line-height: 1.5em;
+}
+
+@media (max-width: 1210px) {
+  .footer span {
+    display: block;
+  }
 }
 /*# sourceMappingURL=style.css.map */
