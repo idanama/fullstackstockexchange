@@ -44,6 +44,13 @@
   gap: 2em;
 }
 
+@media (max-width: 1210px) {
+  .monitor {
+    -ms-grid-columns: minmax(300px, 605px);
+        grid-template-columns: minmax(300px, 605px);
+  }
+}
+
 .card-container {
   max-width: 605px;
 }
@@ -639,7 +646,7 @@ button:active {
   padding-bottom: 1.5rem;
   text-align: center;
   font-size: 1.2rem;
-  height: 3rem;
+  height: 4rem;
   background-color: white;
 }
 /*# sourceMappingURL=style.css.map */
