@@ -31,23 +31,22 @@
     <script type="module">
         import { urlParams } from './js/generic.js';
         import CompanyInfo from './js/components/CompanyInfo.js';
-        (() => {
-            Chart.defaults.global.elements.point.borderWidth = '2';
-            Chart.defaults.global.elements.point.radius = 2;
-            Chart.defaults.global.elements.point.hoverBorderWidth = '2';
-            Chart.defaults.global.elements.point.hitRadius = '10';
-            Chart.defaults.global.elements.point.hoverRadius = '2';
-            Chart.defaults.global.elements.point.borderColor = 'none';
-            Chart.defaults.global.elements.point.backgroundColor = 'none';
-            Chart.defaults.global.elements.line.tension = 0.3;
+        
+        Chart.defaults.global.elements.point.borderWidth = '2';
+        Chart.defaults.global.elements.point.radius = 2;
+        Chart.defaults.global.elements.point.hoverBorderWidth = '2';
+        Chart.defaults.global.elements.point.hitRadius = '10';
+        Chart.defaults.global.elements.point.hoverRadius = '2';
+        Chart.defaults.global.elements.point.borderColor = 'none';
+        Chart.defaults.global.elements.point.backgroundColor = 'none';
+        Chart.defaults.global.elements.line.tension = 0.3;
 
-            urlParams('symbols').split(',').forEach((symbol) => {
-                const cardContainer = document.createElement('div')
-                cardContainer.classList.add('card-container');
-                const card = new CompanyInfo(cardContainer,symbol);
-                document.querySelector('#monitor').append(cardContainer);
-            })
-        })();
+        urlParams('symbols').split(',').forEach((symbol) => {
+            const cardContainer = document.createElement('div')
+            cardContainer.classList.add('card-container');
+            const card = new CompanyInfo(cardContainer,symbol);
+            document.querySelector('#monitor').append(cardContainer);
+        })
     </script>
 
 </body>
