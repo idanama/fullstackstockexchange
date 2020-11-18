@@ -31,6 +31,19 @@ b {
 
 nav {
     display: flex;
+
+    @media (max-width:$cardWidth) {
+        flex-direction: column;
+        height: 6rem;
+
+        .toolbar {
+            padding-top: 0.5rem;
+
+            .symbol {
+                display: none;
+            }
+        }
+    }
 }
 
 a {
@@ -197,7 +210,7 @@ button {
         grid-template-columns: $btnSize auto $btnSize;
         grid-template-rows: $lineHeight auto;
         min-height: 8em;
-        max-height: 100vh;
+        max-height: 200vh;
         transition-duration: 200ms;
 
         #search-compare,

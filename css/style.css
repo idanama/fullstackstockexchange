@@ -38,16 +38,16 @@
 .monitor {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(300px, 605px))[2];
-      grid-template-columns: repeat(2, minmax(300px, 605px));
+  -ms-grid-columns: (minmax(250px, 605px))[2];
+      grid-template-columns: repeat(2, minmax(250px, 605px));
   padding: 2em 0;
   gap: 2em;
 }
 
 @media (max-width: 1210px) {
   .monitor {
-    -ms-grid-columns: minmax(300px, 605px);
-        grid-template-columns: minmax(300px, 605px);
+    -ms-grid-columns: minmax(250px, 605px);
+        grid-template-columns: minmax(250px, 605px);
   }
 }
 
@@ -334,6 +334,22 @@ nav {
   display: flex;
 }
 
+@media (max-width: 605px) {
+  nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 6rem;
+  }
+  nav .toolbar {
+    padding-top: 0.5rem;
+  }
+  nav .toolbar .symbol {
+    display: none;
+  }
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -508,7 +524,7 @@ button:active {
   -ms-grid-rows: 2em auto;
       grid-template-rows: 2em auto;
   min-height: 8em;
-  max-height: 100vh;
+  max-height: 200vh;
   -webkit-transition-duration: 200ms;
           transition-duration: 200ms;
 }
